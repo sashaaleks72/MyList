@@ -1,48 +1,56 @@
-﻿using MyList.Containers;
-using MyList.Interfaces;
+﻿using MyList.Interfaces;
 
 namespace MyList
 {
     public class Starter
     {
+        public Starter(IMyList<string> myList)
+        {
+            MyList = myList;
+        }
+
+        public IMyList<string> MyList { get; set; }
+
         public void Run()
         {
-            IMyList<string> list = new MyList<string>(3);
-            list.Add("Hello");
-            list.Add("my");
-            list.Add("lovely");
-            list.Add("world!");
-            list.AddRange(new string[] { "Slava", "Ukraine!" });
-            list.AddRange(new string[] { "Heroes", "Slava!" });
+            MyList.Add("Hello");
+            MyList.Add("my");
+            MyList.Add("lovely");
+            MyList.Add("world!");
+            MyList.AddRange(new string[] { "Slava", "Ukraine!" });
+            MyList.AddRange(new string[] { "Heroes", "Slava!" });
 
-            Console.WriteLine(list.Capacity + " - " + list.Count);
+            Console.WriteLine(MyList.Capacity + " - " + MyList.Count);
             Console.WriteLine();
 
-            for (int i = 0; i < list.Count; i++)
+            foreach (var item in MyList)
             {
-                Console.Write($"{list[i]} ");
+                Console.Write($"{item} ");
             }
 
             Console.WriteLine("\n");
 
-            list.RemoveAt(0);
-            list.Remove("Slava");
+            MyList.RemoveAt(0);
+            MyList.Remove("Slava");
 
-            Console.WriteLine(list.Capacity + " - " + list.Count);
+            Console.WriteLine(MyList.Capacity + " - " + MyList.Count);
             Console.WriteLine();
 
-            for (int i = 0; i < list.Count; i++)
+            foreach (var item in MyList)
             {
-                Console.Write($"{list[i]} ");
+                Console.Write($"{item} ");
             }
 
             Console.WriteLine("\n");
 
-            list.Sort();
+            MyList.Sort();
 
-            for (int i = 0; i < list.Count; i++)
+            Console.WriteLine(MyList.Capacity + " - " + MyList.Count);
+            Console.WriteLine();
+
+            foreach (var item in MyList)
             {
-                Console.Write($"{list[i]} ");
+                Console.Write($"{item} ");
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System.Collections;
 using MyList.Interfaces;
 
 namespace MyList.Containers
@@ -95,6 +95,20 @@ namespace MyList.Containers
 
         public void Sort()
         {
+            Array.Sort(MyArray, 0, Count);
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            foreach (var item in MyArray)
+            {
+                yield return item;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
 
         private void RaiseCapacity()

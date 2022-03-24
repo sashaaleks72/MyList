@@ -1,6 +1,6 @@
 ﻿namespace MyList.Interfaces
 {
-    public interface IMyList<T>
+    public interface IMyList<T> : IEnumerable<T>
     {
         int Count { get; }
 
